@@ -2,26 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HW13 JS2 ToDo</title>
+  <title>test</title>
   <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-<div class="wrapper">
-  <div class="app">
-    <div class="app__header">
-      <div class="app__title"><span class="app__title-text">To Do List</span></div>
-
-      <div class="app__add">
-        <input class="app__task-new" id="app__task-new" placeholder="Введите новую задчу">
-        <button type="button" class="btn-add" id="bnt-add">add</button>
-      </div>
- </div>
-    <div class="app__body">
-      <ul class="app__list" id="app__list"></ul>
-    </div>
-
+<div class="box">
+  <div class="box-header">
+    <h1>Список дел</h1>
+    <p id="error" class="error"></p>
   </div>
+  <div class="box-body">
+    <input type="text" placeholder="Введите новую задачу ..." id="input_task" class="input_task">
+    <span class="addBtn" id="btn_add"> Add Task</span>
+    <span class="editBtn hide" id="btn_edit"> Edit Task</span>
+  </div>
+  <ul id="list">  </ul>
+  <div class="box-footer">  </div>
 </div>
 <script src="js/main.js"></script>
 </body>
