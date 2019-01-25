@@ -9,15 +9,21 @@
 <div class="box">
   <div class="box-header">
     <h1>Список дел</h1>
+    <div class="flex">
+      <span class="txt" id ="all_task"> Всего поставленно задач : 0</span>
+      <span class="txt" id ="done_task" > Выполненеый зачач : 0</span>
+    </div>
     <p id="error" class="error"></p>
   </div>
   <div class="box-body">
     <input type="text" placeholder="Введите новую задачу ..." id="input_task" class="input_task">
     <span class="addBtn" id="btn_add"> Add Task</span>
-    <span class="editBtn hide" id="btn_edit"> Edit Task</span>
+    <span class="editBtn" id="btn_edit"> Edit Task</span>
   </div>
-  <ul id="list">  </ul>
-  <div class="box-footer">  </div>
+  <ul id="list"></ul>
+  <div class="box-footer">
+    <span class="loadBtn" id="load_edit">Load More</span>
+  </div>
 </div>
 <script src="js/main.js"></script>
 </body>
