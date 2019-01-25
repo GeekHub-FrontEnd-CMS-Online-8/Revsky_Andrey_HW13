@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 toLocal();
                 break;
             case ("DIV"):
+                let temp = ev.target.parentNode.innerText;
                 let str = ev.path[1].firstChild.data;
                 this_event = ev;
                 editTask(str);
@@ -87,10 +88,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function f_print(all, done) {
         let all_str = "Всего поставленно задач : ",
-            done_str = "Выполненный зачач : ";
-        if (done === undefined) {
-            done = 0;
-        }
+            done_str = "Выполненеый зачач : ";
+        if (done === undefined) { done = 0;}
         document.getElementById("all_task").innerHTML = all_str + all;
         document.getElementById("done_task").innerHTML = done_str + done;
     }
@@ -102,12 +101,8 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < items.length; i++) {
             let item = items[i];
             let str = item.classList;
-            if (done === undefined) {
-                done = 0;
-            }
-            if (str.value) {
-                done++
-            }
+            if (done === undefined) { done = 0;}
+            if (str.value) {done++ }
         }
         f_print(all, done);
     }
@@ -131,13 +126,36 @@ document.addEventListener('DOMContentLoaded', function () {
         request.send();
     }
 
-    INIT();
-
-    addNewTaskField.addEventListener('keyup',function (e) {
-        if(e.keyCode === 13) {
-            addTasks(this.value);
-            this.value = "";
+    function requestShow(data) {
+        let next = load + 5;
+        for (let i = load; i < next; ++i) {
+            let item = (data[i]);
+            let status = item.completed;
+            let inputValue = item.title;
+            createTask(inputValue, status);
         }
-    })
+        load = next;
+    }
 
-})
+    function createTask(inputValue, status) {
+        let li = document.createElement('li');
+        let tmp = document.createTextNode(inputValue);
+        li.appendChild(tmp);
+        document.getElementById('list').appendChild(li);
+        let edit = document.createElement('DIV');
+        let span = document.createElement('SPAN');
+        let txt = document.createTextNode("X");
+        let temp = document.createTextNode("EDIT");
+        edit.className = "edit";
+        edit.appendChild(temp);
+        li.appendChild(edit);
+        span.className = "close";
+        span.appendChild(txt);
+        li.appendChild(span);
+        if (status) {
+            li.classList.add("checked");
+        }
+        toLocal();
+    }
+});
+
